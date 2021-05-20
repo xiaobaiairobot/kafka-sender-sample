@@ -22,5 +22,7 @@ public class TargetTopicConfiguration implements InitializingBean {
   public void afterPropertiesSet() throws Exception {
     System.setProperty("targetTopicName", kafkaConfiguration.getTargetTopic());
     System.setProperty("targetTopicGroup", kafkaConfiguration.getTargetGroupId());
+
+    System.setProperty("sourceTopicName", kafkaConfiguration.getSourceTopic());
   }
 }
