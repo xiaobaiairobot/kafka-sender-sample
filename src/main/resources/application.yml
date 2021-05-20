@@ -1,0 +1,37 @@
+server:
+  port: 50001
+
+spring:
+  application:
+    name: sdk-kafka-tools-service
+  kafka:
+    bootstrap-servers: 192.168.0.27:9092
+
+    source-topic: data-platform-storage-1
+#    target-topic: data-platform-storage-1
+    target-topic: targetTopic
+    send-times: 30
+    producer:
+      retries: 1
+      batch-size: 1
+      buffer-memory: 335544332
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.ByteArraySerializer
+    consumer:
+      group-id: group_targetTopic_new
+      auto-offset-reset: earliest
+      enable-auto-commit: true
+      auto-commit-interval: 100
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.ByteArrayDeserializer
+
+springfox:
+  documentation:
+    header: 消息测试服务
+    swagger:
+      v2:
+        path: /api-docs
+
+logging:
+  level:
+    root: info
