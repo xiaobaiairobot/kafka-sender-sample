@@ -42,18 +42,4 @@ public class EventController {
           .body(ex.getMessage());
     }
   }
-
-
-  @ApiOperation(value = "测试收消息", notes = "测试收消息", nickname = "testReceiveMessage")
-  @GetMapping(value = "receive")
-  public ResponseEntity<String> testReceiveMessage() {
-    try {
-      eventService.sendMessage();
-      return ResponseEntity.ok().body("success");
-    } catch (Exception ex) {
-      ex.printStackTrace();
-      return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-          .body(ex.getMessage());
-    }
-  }
 }
